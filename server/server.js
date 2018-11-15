@@ -7,9 +7,9 @@ const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', (req, res, next) => res.sendFile(process.cwd() + '/public/html/index.html'));
+// Food for thought: No app.get and yet a GET request to '/' still works. Why?
 app.post('/', expressSearch);
 
 app.listen(PORT, () => console.log('listening on port ' + PORT));
